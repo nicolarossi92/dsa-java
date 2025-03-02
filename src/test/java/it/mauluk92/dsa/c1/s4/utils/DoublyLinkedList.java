@@ -9,7 +9,7 @@ public class DoublyLinkedList<E> {
     /* Nested Node class */
 
     private static class Node<E>{
-        private E element;                      // reference to the element stored at this node
+        private final E element;                      // reference to the element stored at this node
         private Node<E> prev;                   // reference to the previous node in the list
         private Node<E> next;                   // reference to the subsequent node in the list
         public Node(E e, Node<E> p, Node<E> n){
