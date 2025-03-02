@@ -30,7 +30,7 @@ public class DoublyLinkedList<E> {
     private final Node<E> header;                            // header sentinel
     private final Node<E> trailer;                           // trailer sentinel
     private int size = 0;                              // number of elements in the list
-    /* Constructs a new empty listy */
+    /* Constructs a new empty list */
     public DoublyLinkedList(){
         header = new Node<>(null, null, null); // create header
         trailer = new Node<>(null, header, null); // trailer is preceded by header
