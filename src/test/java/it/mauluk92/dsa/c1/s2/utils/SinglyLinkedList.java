@@ -6,7 +6,7 @@ package it.mauluk92.dsa.c1.s2.utils;
  */
 public class SinglyLinkedList<E> {
 
-    private static class Node<E> {
+    public static class Node<E> {
         private final E element;                    // reference to the element stored at this node
         private Node<E> next;                       // reference to the subsequent node in the list
         public Node(E e, Node<E> n){
@@ -31,6 +31,10 @@ public class SinglyLinkedList<E> {
     private int size = 0;
     public SinglyLinkedList(){
 
+    }
+
+    public Node<E> getHeadNode(){
+        return head;
     }
 
     public int size(){
