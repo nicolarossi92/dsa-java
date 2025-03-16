@@ -1,5 +1,8 @@
 package it.mauluk92.dsa.c2.s2;
 
+import it.mauluk92.dsa.c2.s2.utils.ArrayBasedQueue;
+import it.mauluk92.dsa.c2.s2.utils.Queue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -79,8 +82,44 @@ public class C2S2QueuesTest {
      * the back of the queue would reach the end of the underlying array even when
      * there are a fewer than N elements currently in the queue. We must decide how to store
      * additional elements in such a configuration.
+     * <br/>
+     * <br/>
+     * <h2>Using an array circularly</h2>
+     * <br/>
+     * In developing a robust queue implementation, we allow both the front and back of the queue
+     * to drift rightward, with the contents of the queue "wrapping around" the end of an array, as
+     * necessary. Assuming that the array has fixed length N, new elements are enqueued toward
+     * the end of the current queue, progressing from the front to index N - 1 and continuing at index 0, then 1.
+     * Implementing such a circular view is relatively easy with the <strong>modulo</strong> operator,
+     * denoted with the symbol % in Java. The modulo operator is ideal for treating an array circularly.
+     * When we deque an element and want to "advance" the front index, we use the arithmetic f = (f + 1) % N.
+     * As a concrete example, if we have an array of length 10, and a front index 7, we can advance the front by
+     * formally computing (7 + 1) % 10, which is simply 8, as 8 divided by 10 is 0 with remainder of 8.
+     * When advancing from index 9 (the last one in the array), we compute (9+1) % 10, which evaluates to index 0
      **/
     @Test
     @DisplayName("Array based queue")
-    public void arrayBasedQueue(){}
+    public void arrayBasedQueue(){
+        Queue<Integer> queue = new ArrayBasedQueue<>();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        Assertions.assertEquals(1 , queue.dequeue());
+        Assertions.assertEquals(2, queue.dequeue());
+        Assertions.assertEquals(3, queue.dequeue());
+    }
+
+
+    /**
+     * <h1>Linked list based queue</h1>
+     * <br/>
+     * We can easily adapt a singly linked list to implement the queue ADT while supporting worst case O(1)-time
+     * for all operations, and without any artificial limit on the capacity. The natural orientation for a queue
+     * is to align the front of the queue with the front of the list, and the back of the queue with the tail of the list
+     * because the only update operation that singly linked list support at the back end is an insertion.
+     * Each operation runs at O(1) worst case time.
+     */
+    @Test
+    @DisplayName("Implementing a queue with a singly linked list")
+    public void linkedListBasedQueue(){}
 }
