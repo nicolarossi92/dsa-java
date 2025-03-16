@@ -1,6 +1,7 @@
 package it.mauluk92.dsa.c2.s2;
 
 import it.mauluk92.dsa.c2.s2.utils.ArrayBasedQueue;
+import it.mauluk92.dsa.c2.s2.utils.LinkedQueue;
 import it.mauluk92.dsa.c2.s2.utils.Queue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -121,5 +122,13 @@ public class C2S2QueuesTest {
      */
     @Test
     @DisplayName("Implementing a queue with a singly linked list")
-    public void linkedListBasedQueue(){}
+    public void linkedListBasedQueue(){
+        Queue<Integer> queue = new LinkedQueue<>();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        Assertions.assertEquals(1 , queue.dequeue());
+        Assertions.assertEquals(2, queue.dequeue());
+        Assertions.assertEquals(3, queue.dequeue());
+    }
 }
